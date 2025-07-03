@@ -1,0 +1,17 @@
+def toggle_theme(self):
+        if self.current_theme == "light":
+            self.apply_theme(self.dark_colors)
+            self.current_theme = "dark"
+            self.theme_button.config(text="☾")  # Moon icon
+            self.theme_button.config(bg=self.dark_colors["bg"], fg="white", activebackground=self.dark_colors["bg"], activeforeground="white")
+            self.csv_file_label.configure(foreground=self.dark_colors["fg"])
+            self.tree.tag_configure("evenrow", background=self.dark_colors["tree_alt"])
+            self._show_toast("Dark theme activated.", bg_color="#444444")
+        else:
+            self.apply_theme(self.light_colors)
+            self.current_theme = "light"
+            self.theme_button.config(text="☀")  # Sun icon
+            self.theme_button.config(bg=self.light_colors["bg"], fg="black", activebackground=self.light_colors["bg"], activeforeground="black")
+            self.csv_file_label.configure(foreground=self.light_colors["fg"])
+            self.tree.tag_configure("evenrow", background=self.light_colors["tree_alt"])
+            self._show_toast("Light theme activated.", bg_color="#888888")
